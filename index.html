@@ -326,7 +326,7 @@ io.observe(h);io.observe(p)})();
 <script>
 /* 2026-11-15 文末の泣き別れ防止（戸高さん指摘「一文字だけで折り返してるの良くない」）。
    ルール：文のかたまり（段落・<br>の手前）ごとに、最後の3文字（句読点・閉じかっこは数えない）を改行させない（最後の行は必ず3文字以上）。
-   あわせて、左寄せの文章は両端揃え（均等割り付け）にし、行の右に空きを作らない（同日の指摘「変なスペース」）。
+   両端揃え（均等割り付け）は使わない。字間が大きく広がる行ができ、かえって変な空きに見えるため（同日確認）。
    点検は scripts/check-orphans.js。 */
 (function(){var TAIL=3,MIN=9,boxes=[];
 function blk(el){var d=getComputedStyle(el).display;return d.indexOf('inline')!==0||d==='inline-block'||d==='inline-flex'}
@@ -343,8 +343,7 @@ for(var n=tw.nextNode();n;n=tw.nextNode()){
  if(!n.nodeValue.trim())continue;var p=n.parentElement;if(/^(SCRIPT|STYLE)$/.test(p.tagName))continue;
  var b=p;while(b&&!blk(b))b=b.parentElement;if(b!==box){flush();box=b;if(boxes.indexOf(b)<0)boxes.push(b)}
  cur=n;len+=n.nodeValue.replace(/\s/g,'').length}
-flush();list.forEach(function(t){var d=getComputedStyle(t.parentNode).display;if(/flex|grid/.test(d))return;/* 横並びの枠の直下に区切りを入れると別の部品として離れて並ぶため触らない */if(t.nodeValue.replace(/\s/g,'').length>=TAIL)glue(t)});
-boxes.forEach(function(b){var a=getComputedStyle(b).textAlign;if(a==='start'||a==='left')b.style.textAlign='justify'})})();
+flush();list.forEach(function(t){var d=getComputedStyle(t.parentNode).display;if(/flex|grid/.test(d))return;/* 横並びの枠の直下に区切りを入れると別の部品として離れて並ぶため触らない */if(t.nodeValue.replace(/\s/g,'').length>=TAIL)glue(t)});})();
 </script>
 <div id="stg-label">ステージング（確認用）</div>
 </body>
