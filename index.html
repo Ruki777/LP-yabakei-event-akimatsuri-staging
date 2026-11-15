@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Mochiy+Pop+One&family=Kaisei+Tokumin:wght@800&family=Montserrat:wght@800&family=Zen+Maru+Gothic:wght@700;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=20261115b">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="耶馬溪ジビエフェス2026｜第17回 耶馬溪観光秋まつり">
@@ -332,6 +332,7 @@ io.observe(h);io.observe(p)})();
 function blk(el){var d=getComputedStyle(el).display;return d.indexOf('inline')!==0||d==='inline-block'||d==='inline-flex'}
 function glue(t){var s=t.nodeValue,m=s.match(/\s*$/),end=s.length-m[0].length,cut=end,n=0;
  while(cut>0&&n<TAIL){cut--;if(!/[\s。、．，）」』】！？!?)\]・…▶]/.test(s[cut]))n++}
+ while(cut>0&&/[0-9A-Za-z０-９（(「『【〜~:：.,\-]/.test(s[cut-1]))cut--;/* 数字と単位・かっこの中身を分けない */
  if(cut===0&&n<TAIL)return;var w=document.createElement('span');w.className='nw';
  w.textContent=s.slice(cut,end);var rest=document.createTextNode(s.slice(end));t.nodeValue=s.slice(0,cut);
  t.parentNode.insertBefore(w,t.nextSibling);w.parentNode.insertBefore(rest,w.nextSibling)}
